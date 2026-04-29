@@ -28,8 +28,8 @@ pipeline {
             steps {
                 echo 'Removing conflicting containers...'
                 sh 'docker rm -f mongo backend frontend || true'
-                echo 'Starting all containers...'
-                sh 'docker-compose up -d'
+                echo 'Starting app containers...'
+                sh 'docker-compose up -d mongo backend frontend'
             }
         }
     }
