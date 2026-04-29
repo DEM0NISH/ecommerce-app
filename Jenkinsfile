@@ -13,21 +13,21 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 echo 'Building frontend Docker image...'
-                bat 'docker build -t ecommerce-frontend ./frontend'
+                sh 'docker build -t ecommerce-frontend ./frontend'
             }
         }
 
         stage('Build Backend') {
             steps {
                 echo 'Building backend Docker image...'
-                bat 'docker build -t ecommerce-backend ./backend'
+                sh 'docker build -t ecommerce-backend ./backend'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Starting all containers...'
-                bat 'docker-compose up -d'
+                sh 'docker-compose up -d'
             }
         }
     }
