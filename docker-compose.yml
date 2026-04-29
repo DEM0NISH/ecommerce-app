@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
 
   mongo:
@@ -28,5 +26,16 @@ services:
     depends_on:
       - backend
 
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+
 volumes:
   mongo-data:
+  jenkins-data:
