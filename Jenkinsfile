@@ -26,8 +26,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Stopping existing containers...'
-                sh 'docker-compose down || true'
+                echo 'Removing conflicting containers...'
+                sh 'docker rm -f mongo backend frontend || true'
                 echo 'Starting all containers...'
                 sh 'docker-compose up -d'
             }
